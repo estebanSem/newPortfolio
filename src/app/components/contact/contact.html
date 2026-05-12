@@ -1,0 +1,98 @@
+<section id="contact" class="contact-section">
+  <div class="section-container">
+    <div class="contact-layout">
+      <!-- Left -->
+      <div class="contact-left">
+        <div class="reveal">
+          <span class="section-tag">Contacto</span>
+          <h2 class="section-title">¿Tienes un proyecto<br>de datos?</h2>
+          <p class="section-subtitle" style="margin-bottom:2rem;">
+            Estoy disponible para roles de Data Science, consultoría de arquitectura de datos
+            o proyectos de ML a medida. Hablemos.
+          </p>
+        </div>
+
+        <div class="contact-details reveal reveal-delay-1">
+          <div class="detail-item">
+            <lucide-icon [img]="MapPinIcon" size="16" class="detail-icon"></lucide-icon>
+            <span>Madrid, España · Remoto global</span>
+          </div>
+          <div class="detail-item">
+            <lucide-icon [img]="MailIcon" size="16" class="detail-icon"></lucide-icon>
+            <a href="mailto:hello@datadev.io">hello@datadev.io</a>
+          </div>
+        </div>
+
+        <div class="socials-list reveal reveal-delay-2">
+          <a
+            *ngFor="let s of socials"
+            [href]="s.url"
+            target="_blank"
+            class="social-card">
+            <lucide-icon [img]="s.icon" size="18" class="social-icon"></lucide-icon>
+            <div class="social-info">
+              <span class="social-label">{{ s.label }}</span>
+              <span class="social-handle mono">{{ s.handle }}</span>
+            </div>
+          </a>
+        </div>
+      </div>
+
+      <!-- Form -->
+      <div class="contact-right reveal reveal-delay-1">
+        <div class="form-card">
+          <!-- Success state -->
+          <div *ngIf="submitted" class="success-state">
+            <lucide-icon [img]="CheckIcon" size="40" class="check-icon"></lucide-icon>
+            <h3>¡Mensaje enviado!</h3>
+            <p>Gracias por ponerte en contacto. Te responderé en menos de 24h.</p>
+            <button class="btn-secondary" style="width:100%;justify-content:center;" (click)="resetForm()">
+              Enviar otro mensaje
+            </button>
+          </div>
+
+          <!-- Form state -->
+          <form *ngIf="!submitted" (ngSubmit)="onSubmit()">
+            <div class="form-row">
+              <div class="form-group">
+                <label for="name">Nombre</label>
+                <input id="name" type="text" placeholder="Tu nombre" [(ngModel)]="formData.name" name="name" required>
+              </div>
+              <div class="form-group">
+                <label for="email">Email</label>
+                <input id="email" type="email" placeholder="tu@email.com" [(ngModel)]="formData.email" name="email" required>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="subject">Asunto</label>
+              <input id="subject" type="text" placeholder="¿En qué puedo ayudarte?" [(ngModel)]="formData.subject" name="subject">
+            </div>
+            <div class="form-group">
+              <label for="message">Mensaje</label>
+              <textarea id="message" rows="5" placeholder="Cuéntame tu proyecto o consulta..." [(ngModel)]="formData.message" name="message" required></textarea>
+            </div>
+            <button type="submit" class="submit-btn" [disabled]="isSubmitting">
+              <span *ngIf="!isSubmitting">
+                Enviar mensaje
+                <lucide-icon [img]="SendIcon" size="16"></lucide-icon>
+              </span>
+              <span *ngIf="isSubmitting" class="loading-state">
+                <lucide-icon [img]="LoaderIcon" size="16" class="spin"></lucide-icon>
+                Enviando...
+              </span>
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="footer">
+  <div class="section-container footer-inner">
+    <span class="footer-logo mono">data<span style="color:var(--color-accent)">.</span>dev</span>
+    <span class="footer-copy">Diseñado y desarrollado con Angular & Tailwind CSS</span>
+    <span class="footer-year mono">© {{ 2025 }}</span>
+  </div>
+</footer>

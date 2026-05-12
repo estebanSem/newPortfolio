@@ -1,0 +1,45 @@
+<nav class="navbar" [class.scrolled]="isScrolled">
+  <div class="nav-inner section-container">
+    <!-- Logo -->
+    <button class="logo" (click)="scrollTo('#hero')">
+      <lucide-icon [img]="LogoIcon" size="20" class="logo-icon"></lucide-icon>
+      <span class="logo-text">data<span class="logo-accent">.</span>dev</span>
+    </button>
+
+    <!-- Desktop Links -->
+    <ul class="nav-links">
+      <li *ngFor="let link of navLinks">
+        <button class="nav-link" (click)="scrollTo(link.href)">{{ link.label }}</button>
+      </li>
+    </ul>
+
+    <!-- Desktop Actions -->
+    <div class="nav-actions">
+      <a href="https://github.com" target="_blank" class="icon-btn" aria-label="GitHub">
+        <lucide-icon [img]="GithubIcon" size="18"></lucide-icon>
+      </a>
+      <a href="https://linkedin.com" target="_blank" class="icon-btn" aria-label="LinkedIn">
+        <lucide-icon [img]="LinkedinIcon" size="18"></lucide-icon>
+      </a>
+      <button class="cta-btn" (click)="scrollTo('#contact')">Contáctame</button>
+    </div>
+
+    <!-- Mobile Menu Toggle -->
+    <button class="menu-toggle" (click)="toggleMenu()" aria-label="Toggle menu">
+      <lucide-icon [img]="menuOpen ? XIcon : MenuIcon" size="22"></lucide-icon>
+    </button>
+  </div>
+
+  <!-- Mobile Menu -->
+  <div class="mobile-menu" [class.open]="menuOpen">
+    <ul>
+      <li *ngFor="let link of navLinks">
+        <button (click)="scrollTo(link.href)">{{ link.label }}</button>
+      </li>
+    </ul>
+    <div class="mobile-actions">
+      <a href="https://github.com" target="_blank">GitHub</a>
+      <a href="https://linkedin.com" target="_blank">LinkedIn</a>
+    </div>
+  </div>
+</nav>

@@ -1,0 +1,95 @@
+<section id="hero" class="hero-section">
+  <!-- Background grid & blobs -->
+  <div class="bg-grid"></div>
+  <div class="blob blob-1"></div>
+  <div class="blob blob-2"></div>
+
+  <div class="section-container hero-content">
+    <div class="hero-left">
+      <!-- Badge -->
+      <div class="status-badge animate-fade-up">
+        <span class="status-dot"></span>
+        <span>Disponible para nuevos proyectos</span>
+      </div>
+
+      <!-- Heading -->
+      <h1 class="hero-heading animate-fade-up-delay1">
+        Transformo datos en<br>
+        <span class="heading-accent">decisiones</span><br>
+        que escalan.
+      </h1>
+
+      <!-- Typewriter subtitle -->
+      <div class="typewriter-wrap animate-fade-up-delay2">
+        <span class="typewriter-label">Soy&nbsp;</span>
+        <span class="typewriter-text">{{ displayTitle }}</span>
+        <span class="cursor">|</span>
+      </div>
+
+      <!-- Description -->
+      <p class="hero-desc animate-fade-up-delay2">
+        Especializado en arquitecturas de datos a escala, modelado predictivo avanzado
+        y pipelines de MLOps. Convierto petabytes de información en inteligencia accionable.
+      </p>
+
+      <!-- CTAs -->
+      <div class="hero-ctas animate-fade-up-delay3">
+        <button class="btn-primary" (click)="scrollTo('#projects')">
+          Ver Proyectos
+          <lucide-icon [img]="ExternalLinkIcon" size="16"></lucide-icon>
+        </button>
+        <a class="btn-secondary" href="/assets/cv.pdf" download>
+          <lucide-icon [img]="DownloadIcon" size="16"></lucide-icon>
+          Descargar CV
+        </a>
+      </div>
+
+      <!-- Social -->
+      <div class="hero-social animate-fade-up-delay4">
+        <a href="https://github.com" target="_blank" class="social-link">
+          <lucide-icon [img]="GithubIcon" size="16"></lucide-icon>
+          GitHub
+        </a>
+        <span class="divider"></span>
+        <a href="https://linkedin.com" target="_blank" class="social-link">
+          <lucide-icon [img]="LinkedinIcon" size="16"></lucide-icon>
+          LinkedIn
+        </a>
+        <span class="divider"></span>
+        <a href="https://kaggle.com" target="_blank" class="social-link">
+          <span class="kaggle-k">k</span>
+          Kaggle
+        </a>
+      </div>
+    </div>
+
+    <!-- Right: Stats Card -->
+    <div class="hero-right animate-fade-up-delay3">
+      <div class="stats-card">
+        <div class="stats-card-header">
+          <span class="mono" style="font-size:0.7rem;color:var(--color-text-muted);">$ performance_metrics.py</span>
+          <div class="card-dots">
+            <span></span><span></span><span></span>
+          </div>
+        </div>
+        <div class="stats-grid">
+          <div *ngFor="let stat of stats" class="stat-item">
+            <div class="stat-value">{{ stat.value }}</div>
+            <div class="stat-label">{{ stat.label }}</div>
+          </div>
+        </div>
+        <div class="skills-row">
+          <div *ngFor="let skill of skills" class="skill-pill">
+            <lucide-icon [img]="skill.icon" size="14" class="skill-icon"></lucide-icon>
+            <span>{{ skill.label }}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scroll indicator -->
+  <button class="scroll-indicator" (click)="scrollTo('#projects')">
+    <lucide-icon [img]="ChevronDownIcon" size="20"></lucide-icon>
+  </button>
+</section>

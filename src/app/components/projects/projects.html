@@ -1,0 +1,69 @@
+<section id="projects" class="projects-section">
+  <div class="section-container">
+    <div class="section-header reveal">
+      <span class="section-tag">Proyectos</span>
+      <h2 class="section-title">Trabajo seleccionado</h2>
+      <p class="section-subtitle">
+        Una selección de proyectos que muestran el uso de datos a escala,
+        desde pipelines de ingesta hasta modelos en producción.
+      </p>
+    </div>
+
+    <!-- Filters -->
+    <div class="filters reveal reveal-delay-1">
+      <button
+        *ngFor="let f of filters"
+        class="filter-btn"
+        [class.active]="activeFilter === f"
+        (click)="setFilter(f)">
+        {{ f }}
+      </button>
+    </div>
+
+    <!-- Grid -->
+    <div class="projects-grid">
+      <div
+        *ngFor="let project of filteredProjects; let i = index"
+        class="project-card reveal"
+        [class.featured]="project.featured"
+        [style.transition-delay]="(i * 0.1) + 's'">
+
+        <!-- Card Header -->
+        <div class="card-header">
+          <span class="category-badge">{{ project.category }}</span>
+          <div class="card-meta">
+            <span class="meta-item">
+              <lucide-icon [img]="StarIcon" size="13"></lucide-icon>
+              {{ project.stars }}
+            </span>
+            <span class="meta-item">
+              <lucide-icon [img]="GitForkIcon" size="13"></lucide-icon>
+              {{ project.forks }}
+            </span>
+          </div>
+        </div>
+
+        <!-- Card Body -->
+        <h3 class="card-title">{{ project.title }}</h3>
+        <p class="card-desc">{{ project.longDesc }}</p>
+
+        <!-- Stack -->
+        <div class="card-stack">
+          <span *ngFor="let tech of project.stack" class="tech-badge">{{ tech }}</span>
+        </div>
+
+        <!-- Card Footer -->
+        <div class="card-footer">
+          <a [href]="project.githubUrl" target="_blank" class="card-link">
+            <lucide-icon [img]="GithubIcon" size="15"></lucide-icon>
+            Código
+          </a>
+          <a *ngIf="project.colabUrl" [href]="project.colabUrl" target="_blank" class="card-link colab-link">
+            <lucide-icon [img]="ExternalLinkIcon" size="15"></lucide-icon>
+            Notebook
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

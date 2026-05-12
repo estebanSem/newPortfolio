@@ -1,0 +1,60 @@
+<section id="education" class="education-section">
+  <div class="section-container">
+    <div class="section-header reveal">
+      <span class="section-tag">Formación</span>
+      <h2 class="section-title">Educación & Certificaciones</h2>
+      <p class="section-subtitle">
+        Base académica sólida combinada con certificaciones cloud de industria
+        en continua actualización.
+      </p>
+    </div>
+
+    <div class="edu-layout">
+      <!-- Degrees -->
+      <div class="degrees-col">
+        <h3 class="col-heading reveal">
+          <lucide-icon [img]="GraduationCapIcon" size="18"></lucide-icon>
+          Titulaciones
+        </h3>
+        <div class="degrees-list">
+          <div
+            *ngFor="let edu of educations; let i = index"
+            class="degree-card reveal"
+            [style.transition-delay]="(i * 0.1 + 0.1) + 's'">
+            <div class="degree-year mono">{{ edu.period }}</div>
+            <h4 class="degree-title">{{ edu.degree }}</h4>
+            <div class="degree-institution">{{ edu.institution }}</div>
+            <p class="degree-desc">{{ edu.description }}</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Certifications -->
+      <div class="certs-col">
+        <h3 class="col-heading reveal">
+          <lucide-icon [img]="AwardIcon" size="18"></lucide-icon>
+          Certificaciones
+        </h3>
+        <div class="certs-grid">
+          <a
+            *ngFor="let cert of certifications; let i = index"
+            [href]="cert.credentialUrl"
+            target="_blank"
+            class="cert-card reveal"
+            [style.transition-delay]="(i * 0.08 + 0.1) + 's'">
+            <div class="cert-badge">{{ cert.badge }}</div>
+            <div class="cert-info">
+              <div class="cert-name">{{ cert.name }}</div>
+              <div class="cert-meta">
+                <span>{{ cert.issuer }}</span>
+                <span class="cert-dot">·</span>
+                <span class="mono">{{ cert.date }}</span>
+              </div>
+            </div>
+            <lucide-icon [img]="ExternalLinkIcon" size="14" class="cert-arrow"></lucide-icon>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

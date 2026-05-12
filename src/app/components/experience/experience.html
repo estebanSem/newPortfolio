@@ -1,0 +1,61 @@
+<section id="experience" class="experience-section">
+  <div class="section-container">
+    <div class="section-header reveal">
+      <span class="section-tag">Trayectoria</span>
+      <h2 class="section-title">Experiencia profesional</h2>
+      <p class="section-subtitle">
+        Más de 8 años construyendo soluciones de datos de alto impacto
+        en entornos de alta demanda y escala.
+      </p>
+    </div>
+
+    <div class="timeline">
+      <div
+        *ngFor="let exp of experiences; let i = index"
+        class="timeline-item reveal"
+        [class.current]="exp.current"
+        [style.transition-delay]="(i * 0.15) + 's'">
+
+        <!-- Timeline connector -->
+        <div class="timeline-connector">
+          <div class="timeline-dot" [class.active]="exp.current"></div>
+          <div class="timeline-line" *ngIf="i < experiences.length - 1"></div>
+        </div>
+
+        <!-- Content -->
+        <div class="timeline-content">
+          <div class="exp-header">
+            <div class="exp-title-wrap">
+              <h3 class="exp-role">{{ exp.role }}</h3>
+              <span class="exp-company">
+                {{ exp.company }}
+                <lucide-icon [img]="ArrowUpRightIcon" size="14"></lucide-icon>
+              </span>
+            </div>
+            <div class="exp-meta">
+              <span class="meta-pill">
+                <lucide-icon [img]="CalendarIcon" size="12"></lucide-icon>
+                {{ exp.period }}
+              </span>
+              <span class="meta-pill" *ngIf="exp.current" style="color:var(--color-emerald);border-color:rgba(0,200,150,0.25);background:rgba(0,200,150,0.07);">
+                <span class="dot-active"></span> Actual
+              </span>
+              <span class="meta-pill">
+                <lucide-icon [img]="MapPinIcon" size="12"></lucide-icon>
+                {{ exp.location }}
+              </span>
+            </div>
+          </div>
+
+          <ul class="highlights">
+            <li *ngFor="let h of exp.highlights">{{ h }}</li>
+          </ul>
+
+          <div class="exp-stack">
+            <span *ngFor="let tech of exp.stack" class="tech-badge">{{ tech }}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
