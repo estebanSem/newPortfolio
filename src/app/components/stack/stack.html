@@ -1,0 +1,108 @@
+<section id="stack" class="stack-section">
+  <div class="section-container">
+
+    <!-- Header -->
+    <div class="section-header reveal">
+      <span class="section-tag">Stack</span>
+      <h2 class="section-title">Tecnologías que domino</h2>
+      <p class="section-subtitle">
+        Herramientas con las que trabajo a diario, desde la ingesta de datos
+        hasta el despliegue de modelos en producción.
+      </p>
+    </div>
+
+    <!-- Category grid -->
+    <div class="category-grid">
+      <button
+        *ngFor="let cat of categories; let i = index"
+        class="category-card reveal"
+        [class.active]="activeCategory === cat.id"
+        [attr.data-color]="cat.color"
+        [style.transition-delay]="(i * 0.07) + 's'"
+        (click)="setActive(cat.id)">
+
+        <div class="cat-icon-wrap" [attr.data-color]="cat.color">
+          <lucide-icon [img]="cat.icon" size="20"></lucide-icon>
+        </div>
+        <span class="cat-label">{{ cat.label }}</span>
+        <span class="cat-count mono">{{ cat.skills.length }}</span>
+      </button>
+    </div>
+
+    <!-- Skill detail panel -->
+    <div class="skill-panel" [class.open]="activeCategory !== null">
+      <ng-container *ngIf="getActiveCategory() as cat">
+        <div class="panel-inner" [attr.data-color]="cat.color">
+
+          <!-- Panel header -->
+          <div class="panel-header">
+            <div class="panel-title-wrap">
+              <div class="panel-icon" [attr.data-color]="cat.color">
+                <lucide-icon [img]="cat.icon" size="18"></lucide-icon>
+              </div>
+              <h3 class="panel-title">{{ cat.label }}</h3>
+            </div>
+            <button class="panel-close" (click)="setActive(cat.id)" aria-label="Cerrar">✕</button>
+          </div>
+
+          <!-- Skill cards grid -->
+          <div class="skill-cards">
+            <div
+              *ngFor="let skill of cat.skills; let i = index"
+              class="skill-card"
+              [attr.data-color]="cat.color"
+              [style.animation-delay]="(i * 0.06) + 's'">
+
+              <!-- Logo + Name row -->
+              <div class="skill-top">
+                <div class="skill-logo-wrap">
+                  <img
+                    *ngIf="skill.logo"
+                    [src]="skill.logo"
+                    [alt]="skill.name"
+                    class="skill-logo"
+                    (error)="onLogoError($event)" />
+                  <span *ngIf="!skill.logo" class="skill-logo-fallback mono">
+                    {{ skill.name.slice(0, 2).toUpperCase() }}
+                  </span>
+                </div>
+                <span class="skill-name">{{ skill.name }}</span>
+              </div>
+
+              <!-- Level badge -->
+              <div
+                class="skill-level-badge"
+                [class.level-high]="skill.level >= 80"
+                [class.level-mid]="skill.level < 80">
+                <span class="badge-dot"></span>
+                <span>{{ skill.level >= 80 ? 'Alto' : 'Medio' }}</span>
+              </div>
+
+              <!-- Bar track -->
+              <!-- <div class="skill-bar-track">
+                <div
+                  class="skill-bar-fill"
+                  [attr.data-color]="cat.color"
+                  [style.width]="skill.level + '%'">
+                </div>
+              </div> -->
+
+              <!-- Percentage -->
+              <!-- <span class="skill-pct mono" [attr.data-color]="cat.color">{{ skill.level }}%</span> -->
+            </div>
+          </div>
+
+        </div>
+      </ng-container>
+    </div>
+
+    <!-- Tools strip -->
+    <div class="tools-section reveal">
+      <h3 class="tools-heading">Herramientas adicionales</h3>
+      <div class="tools-grid">
+        <span *ngFor="let tool of extraTools" class="tech-badge tool-pill">{{ tool }}</span>
+      </div>
+    </div>
+
+  </div>
+</section>

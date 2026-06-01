@@ -1,0 +1,330 @@
+/* ─── Section ─────────────────────────────────────────────── */
+.stack-section {
+  padding: 7rem 0;
+  background: var(--color-bg-primary);
+  position: relative;
+}
+.stack-section::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--color-border), transparent);
+}
+.section-header { margin-bottom: 2.5rem; }
+
+/* ─── Color tokens (data-color) ───────────────────────────── */
+[data-color="accent"]  {
+  --cat-color: var(--color-accent);
+  --cat-bg:    rgba(0, 229, 255, 0.07);
+  --cat-border:rgba(0, 229, 255, 0.22);
+}
+[data-color="emerald"] {
+  --cat-color: var(--color-emerald);
+  --cat-bg:    rgba(0, 200, 150, 0.07);
+  --cat-border:rgba(0, 200, 150, 0.22);
+}
+[data-color="purple"]  {
+  --cat-color: #A78BFA;
+  --cat-bg:    rgba(167, 139, 250, 0.07);
+  --cat-border:rgba(167, 139, 250, 0.22);
+}
+[data-color="blue"]    {
+  --cat-color: #60A5FA;
+  --cat-bg:    rgba(96, 165, 250, 0.07);
+  --cat-border:rgba(96, 165, 250, 0.22);
+}
+[data-color="amber"]   {
+  --cat-color: #FBBF24;
+  --cat-bg:    rgba(251, 191, 36, 0.07);
+  --cat-border:rgba(251, 191, 36, 0.22);
+}
+[data-color="coral"]   {
+  --cat-color: #FB7185;
+  --cat-bg:    rgba(251, 113, 133, 0.07);
+  --cat-border:rgba(251, 113, 133, 0.22);
+}
+
+/* ─── Category selector grid ──────────────────────────────── */
+.category-grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 0.75rem;
+  margin-bottom: 1.25rem;
+}
+
+.category-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 1.25rem 0.75rem;
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-border);
+  border-radius: 12px;
+  cursor: pointer;
+  transition: border-color 0.22s ease, transform 0.22s ease, background 0.22s ease;
+  position: relative;
+  overflow: hidden;
+}
+.category-card:hover {
+  border-color: var(--cat-border);
+  transform: translateY(-2px);
+  background: var(--cat-bg);
+}
+.category-card.active {
+  border-color: var(--cat-border);
+  background: var(--cat-bg);
+  box-shadow: 0 0 0 1px var(--cat-border);
+}
+
+.cat-icon-wrap {
+  width: 40px; height: 40px;
+  border-radius: 10px;
+  background: var(--cat-bg);
+  border: 1px solid var(--cat-border);
+  display: flex; align-items: center; justify-content: center;
+  color: var(--cat-color);
+  transition: box-shadow 0.2s;
+}
+.category-card.active .cat-icon-wrap,
+.category-card:hover  .cat-icon-wrap {
+  box-shadow: 0 0 14px color-mix(in srgb, var(--cat-color) 35%, transparent);
+}
+.cat-label {
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--color-text-secondary);
+  text-align: center;
+  transition: color 0.2s;
+}
+.category-card.active .cat-label,
+.category-card:hover  .cat-label { color: var(--cat-color); }
+.cat-count {
+  font-size: 0.65rem;
+  color: var(--color-text-muted);
+  letter-spacing: 0.05em;
+}
+
+/* ─── Slide-down panel ────────────────────────────────────── */
+.skill-panel {
+  display: grid;
+  grid-template-rows: 0fr;
+  opacity: 0;
+  transition: grid-template-rows 0.38s ease, opacity 0.3s ease, margin-bottom 0.3s ease;
+  margin-bottom: 0;
+}
+.skill-panel.open {
+  grid-template-rows: 1fr;
+  opacity: 1;
+  margin-bottom: 2.5rem;
+}
+/* overflow wrapper (required for grid row animation) */
+.skill-panel > ng-container { overflow: hidden; display: contents; }
+
+.panel-inner {
+  background: var(--color-bg-card);
+  border: 1px solid var(--cat-border);
+  border-radius: 16px;
+  padding: 1.75rem;
+  /* subtle left accent line */
+  box-shadow: inset 3px 0 0 var(--cat-border);
+  overflow: hidden;
+}
+
+/* Panel header */
+.panel-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.5rem;
+}
+.panel-title-wrap {
+  display: flex; align-items: center; gap: 0.75rem;
+}
+.panel-icon {
+  width: 36px; height: 36px;
+  border-radius: 9px;
+  background: var(--cat-bg);
+  border: 1px solid var(--cat-border);
+  display: flex; align-items: center; justify-content: center;
+  color: var(--cat-color);
+}
+.panel-title {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--color-text-primary);
+  margin: 0;
+}
+.panel-close {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid var(--color-border);
+  color: var(--color-text-muted);
+  width: 28px; height: 28px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.75rem;
+  display: flex; align-items: center; justify-content: center;
+  transition: all 0.15s;
+}
+.panel-close:hover {
+  background: rgba(255,255,255,0.09);
+  color: var(--color-text-primary);
+}
+
+/* ─── Skill cards grid ────────────────────────────────────── */
+.skill-cards {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 0.85rem;
+}
+
+@keyframes skillCardIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.skill-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+  background: rgba(255,255,255,0.025);
+  border: 1px solid var(--color-border);
+  border-radius: 12px;
+  padding: 1rem;
+  animation: skillCardIn 0.35s ease both;
+  transition: border-color 0.2s, transform 0.2s;
+}
+.skill-card:hover {
+  border-color: var(--cat-border);
+  transform: translateY(-2px);
+}
+
+/* Logo + name */
+.skill-top {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+.skill-logo-wrap {
+  width: 28px; height: 28px;
+  flex-shrink: 0;
+  display: flex; align-items: center; justify-content: center;
+}
+.skill-logo {
+  width: 24px; height: 24px;
+  object-fit: contain;
+  /* Invierte el SVG negro de SimpleIcons para que sea visible en fondo oscuro */
+  filter: invert(1) brightness(0.85);
+  display: block;
+}
+.skill-logo-fallback {
+  width: 28px; height: 28px;
+  border-radius: 6px;
+  background: var(--cat-bg);
+  border: 1px solid var(--cat-border);
+  color: var(--cat-color);
+  font-size: 0.6rem;
+  font-weight: 700;
+  display: none;           /* shown by onLogoError */
+  align-items: center;
+  justify-content: center;
+  letter-spacing: 0.03em;
+}
+.skill-name {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--color-text-primary);
+  line-height: 1.2;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Level badge */
+.skill-level-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 0.18rem 0.5rem;
+  border-radius: 999px;
+  width: fit-content;
+}
+.level-high {
+  color: var(--color-emerald);
+  background: rgba(0, 200, 150, 0.1);
+  border: 1px solid rgba(0, 200, 150, 0.25);
+}
+.level-mid {
+  color: #FBBF24;
+  background: rgba(251, 191, 36, 0.08);
+  border: 1px solid rgba(251, 191, 36, 0.22);
+}
+.badge-dot {
+  width: 5px; height: 5px;
+  border-radius: 50%;
+  background: currentColor;
+  flex-shrink: 0;
+}
+
+/* Bar */
+.skill-bar-track {
+  height: 3px;
+  background: rgba(255,255,255,0.06);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+@keyframes barGrow {
+  from { width: 0 !important; }
+}
+.skill-bar-fill {
+  height: 100%;
+  background: var(--cat-color);
+  border-radius: 2px;
+  animation: barGrow 0.55s cubic-bezier(0.16, 1, 0.3, 1) both;
+  box-shadow: 0 0 5px color-mix(in srgb, var(--cat-color) 60%, transparent);
+}
+
+/* Percentage */
+.skill-pct {
+  font-size: 0.68rem;
+  color: var(--cat-color);
+  letter-spacing: 0.04em;
+  opacity: 0.8;
+}
+
+/* ─── Extra tools ─────────────────────────────────────────── */
+.tools-section { margin-top: 3rem; }
+.tools-heading {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--color-text-muted);
+  margin-bottom: 1rem;
+}
+.tools-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+.tool-pill { cursor: default; font-size: 0.72rem; }
+
+/* ─── Responsive ──────────────────────────────────────────── */
+@media (max-width: 1100px) {
+  .skill-cards { grid-template-columns: repeat(4, 1fr); }
+}
+@media (max-width: 900px) {
+  .category-grid { grid-template-columns: repeat(3, 1fr); }
+  .skill-cards   { grid-template-columns: repeat(3, 1fr); }
+}
+@media (max-width: 600px) {
+  .category-grid { grid-template-columns: repeat(2, 1fr); }
+  .skill-cards   { grid-template-columns: repeat(2, 1fr); }
+}

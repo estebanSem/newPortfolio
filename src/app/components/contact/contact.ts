@@ -24,9 +24,9 @@ export class ContactComponent implements AfterViewInit {
   submitted = false;
 
   socials = [
-    { icon: this.GithubIcon,    label: 'GitHub',   handle: '@datadev',  url: 'https://github.com' },
-    { icon: this.LinkedinIcon,  label: 'LinkedIn', handle: '/in/datadev', url: 'https://linkedin.com' },
-    { icon: this.MailIcon,      label: 'Email',    handle: 'hello@datadev.io', url: 'mailto:hello@datadev.io' },
+    { icon: this.GithubIcon,    label: 'GitHub',   handle: '@estebanSem',  url: 'https://github.com/estebanSem' },
+    { icon: this.LinkedinIcon,  label: 'LinkedIn', handle: '/in/estebansempere', url: 'https://www.linkedin.com/in/esteban-sempere/' },
+    { icon: this.MailIcon,      label: 'Email',    handle: 'esteban.daw11@gmail.com', url: 'mailto:esteban.daw11@gmail.com' },
   ];
 
   async onSubmit(): Promise<void> {

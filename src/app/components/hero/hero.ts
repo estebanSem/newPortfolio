@@ -19,17 +19,17 @@ export class HeroComponent implements OnInit, OnDestroy {
   readonly BrainIcon = Brain;
   readonly CpuIcon = Cpu;
 
-  titles = ['Data Scientist', 'Big Data Engineer', 'ML Specialist', 'Analytics Lead'];
+  titles = ['Data Scientist', 'Big Data Engineer', 'ML Specialist'];
   currentTitleIndex = 0;
   displayTitle = '';
   isDeleting = false;
   typingInterval: any;
 
   stats = [
-    { value: '12+', label: 'Proyectos en Producción' },
+    { value: '3+', label: 'Proyectos en Producción' },
     { value: '3B+', label: 'Registros Procesados' },
-    { value: '94%', label: 'Precisión Media en Modelos' },
-    { value: '8',   label: 'Años de Experiencia' },
+    { value: '85%', label: 'Precisión Media en Modelos' },
+    { value: '3',   label: 'Años de Experiencia' },
   ];
 
   skills = [

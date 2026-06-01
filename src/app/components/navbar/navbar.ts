@@ -23,6 +23,7 @@ export class NavbarComponent {
     { label: 'Sobre Mí',    href: '#hero' },
     { label: 'Proyectos',   href: '#projects' },
     { label: 'Experiencia', href: '#experience' },
+    { label: 'Stack',       href: '#stack' },
     { label: 'Formación',   href: '#education' },
     { label: 'Contacto',    href: '#contact' },
   ];

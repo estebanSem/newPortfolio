@@ -10,7 +10,7 @@
     </div>
 
     <!-- Filters -->
-    <div class="filters reveal reveal-delay-1">
+    <!-- <div class="filters reveal reveal-delay-1">
       <button
         *ngFor="let f of filters"
         class="filter-btn"
@@ -18,7 +18,7 @@
         (click)="setFilter(f)">
         {{ f }}
       </button>
-    </div>
+    </div> -->
 
     <!-- Grid -->
     <div class="projects-grid">
@@ -29,7 +29,7 @@
         [style.transition-delay]="(i * 0.1) + 's'">
 
         <!-- Card Header -->
-        <div class="card-header">
+        <!-- <div class="card-header">
           <span class="category-badge">{{ project.category }}</span>
           <div class="card-meta">
             <span class="meta-item">
@@ -41,7 +41,7 @@
               {{ project.forks }}
             </span>
           </div>
-        </div>
+        </div> -->
 
         <!-- Card Body -->
         <h3 class="card-title">{{ project.title }}</h3>
@@ -58,11 +58,12 @@
             <lucide-icon [img]="GithubIcon" size="15"></lucide-icon>
             Código
           </a>
-          <a *ngIf="project.colabUrl" [href]="project.colabUrl" target="_blank" class="card-link colab-link">
-            <lucide-icon [img]="ExternalLinkIcon" size="15"></lucide-icon>
-            Notebook
-          </a>
+          <div *ngIf="project.en_proceso"  class="card-stack-pr">
+            <span class="tech-badge">En proceso</span>
+          </div>
         </div>
+        <!-- Stack -->
+        
       </div>
     </div>
   </div>

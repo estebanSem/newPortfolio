@@ -70,7 +70,17 @@
 .card-footer {
   display: flex; gap: 0.75rem; padding-top: 0.75rem;
   border-top: 1px solid var(--color-border); margin-top: auto;
+  z-index: 10; /* Esto lo pone por
+   encima del ::after de la card */
 }
+
+.card-stack-pr { display: flex; flex-wrap: wrap; gap: 0.4rem; color: #FBBF24;}
+.level-mid {
+  color: #FBBF24;
+  background: rgba(251, 191, 36, 0.08);
+  border: 1px solid rgba(251, 191, 36, 0.22);
+}
+
 .card-link {
   display: inline-flex; align-items: center; gap: 0.35rem;
   font-size: 0.8rem; color: var(--color-text-secondary); text-decoration: none;

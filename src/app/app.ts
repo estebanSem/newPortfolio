@@ -6,6 +6,7 @@ import { ProjectsComponent }  from './components/projects/projects';
 import { ExperienceComponent } from './components/experience/experience';
 import { EducationComponent } from './components/education/education';
 import { ContactComponent }   from './components/contact/contact';
+import { StackComponent }   from './components/stack/stack';
 
 @Component({
   selector: 'app-root',
@@ -18,12 +19,14 @@ import { ContactComponent }   from './components/contact/contact';
     ExperienceComponent,
     EducationComponent,
     ContactComponent,
+    StackComponent
   ],
   template: `
     <app-navbar></app-navbar>
     <main>
       <app-hero></app-hero>
       <app-projects></app-projects>
+      <app-stack></app-stack>
       <app-experience></app-experience>
       <app-education></app-education>
       <app-contact></app-contact>
